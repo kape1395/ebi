@@ -1,4 +1,8 @@
+.eunit/
+.project
+.settings/
+.ditz-config
 deps/
 ebin/
+logs/
 rel/ebi/
-*.beam
