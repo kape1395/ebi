@@ -13,6 +13,12 @@ This package generates EBI release.
 Building and running
 ====================
 
+Build dependencies:
+
+    sudo apt-get install esl-erlang
+    sudo apt-get install gcc g++ libpam0g-dev
+    # build rebar, make it available on the $PATH
+
 Get dependencies, compile and generate the release:
 
     make deps
@@ -31,9 +37,25 @@ Start in the interactive mode:
 
 
 
+Running EBI WEB under apache
+============================
+
+Add the following lines in the apache site definition (e.g. /etc/apache2/sites-enabled/default):
+
+    ProxyPass        /ebi/ http://localhost:13950/ebi/
+    ProxyPassReverse /ebi/ http://localhost:13950/ebi/
+
+then:
+
+    sudo a2enmod proxy_http 
+    sudo invoke-rc.d apache2 restart
+
+
+
 References
 ==========
 
 See [rebar-release-upgrade-caveats](http://mokele.co.uk/2011/07/01/rebar-release-upgrade-caveats.html) for more details.
+
 
 
